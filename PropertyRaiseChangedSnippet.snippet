@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<CodeSnippets  
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">  
+    <CodeSnippet Format="1.0.0">  
+        <Header>  
+            <Title>Property Raise Changed</Title>  
+            <Shortcut>propr</Shortcut>
+            <Description>Creates a property that calls RaisePropertyChanged(); on set</Description>
+        </Header>  
+        <Snippet>  
+            <Declarations>
+                <Literal>
+                    <ID>Type</ID>
+                    <Default>int</Default>
+                </Literal>
+                <Literal>
+                    <ID>Private</ID>
+                    <Default>_myVar</Default>
+                </Literal>
+                <Literal>
+                    <ID>Public</ID>
+                    <Default>MyVar</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">  
+                <![CDATA[private $Type$ $Private$;
+                    public $Type$ $Public$
+                    {
+                        get => $Private$;
+                        set
+                        {
+                            $Private$ = value;
+                            RaisePropertyChanged();
+                        }
+                    }
+                ]]>  
+            </Code>  
+        </Snippet>  
+    </CodeSnippet>  
+</CodeSnippets>  
