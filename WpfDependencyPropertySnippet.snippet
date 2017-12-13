@@ -23,17 +23,7 @@
                 </Literal>
             </Declarations>
             <Code Language="CSharp">  
-                <![CDATA[private $Type$ $Private$;
-                    public $Type$ $Public$
-                    {
-                        get => $Private$;
-                        set
-                        {
-                            $Private$ = value;
-                            RaisePropertyChanged();
-                        }
-                    }
-                    
+                <![CDATA[
                     public static readonly DependencyProperty $Public$Property = DependencyProperty.Register("$Public$", typeof($Type$), typeof($ContainingClass$));
                     public bool $Public$
                     {
