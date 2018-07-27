@@ -2,8 +2,14 @@
 :: Assumes magick by imagemagick is on the path
 @ECHO OFF
 
+IF "%2" == "ios" goto:ios
+IF "%2" == "android" goto:android
 
-:: ANDROID
+CALL :android %1
+CALL :ios %1
+goto:eof
+
+:android
 :: Prepare directories
 mkdir android
 cd android
@@ -20,8 +26,10 @@ magick convert %1 -resize 75%% ./android/drawable-xxhdpi/%1
 magick convert %1 -resize 50%% ./android/drawable-xhdpi/%1
 magick convert %1 -resize 37.5%% ./android/drawable-hdpi/%1
 magick convert %1 -resize 25%% ./android/drawable-mdpi/%1
+exit /B
+    
 
-:: IOS
+:ios
 :: Prepare directories
 mkdir iOS
 cd iOS
@@ -59,3 +67,4 @@ echo         "version": 1 >> Contents.json
 echo     } >> Contents.json
 echo } >> Contents.json
 cd ../..
+exit /B
